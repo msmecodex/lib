@@ -9,18 +9,22 @@ import (
 )
 
 type Claims struct {
-	Username string `json:"username"`
-	Role     string `json:"role"`
+	Name        string   `json:"name"`
+	Email       string   `json:"email"`
+	Role        string   `json:"role"`
+	Permissions []string `json:"permissions"`
 	jwt.RegisteredClaims
 }
 
-func GenerateJWT(username, role string) (string, error) {
+func GenerateJWT(name, email, role string, permissions []string) (string, error) {
 	cfg := loadConfig()
 	jwtKey := cfg.JWT_SECRET
 	expiration := time.Now().Add(24 * time.Hour)
 	claims := &Claims{
-		Username: username,
-		Role:     role,
+		Name:        name,
+		Email:       email,
+		Role:        role,
+		Permissions: permissions,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(expiration),
 		},
