@@ -1,9 +1,9 @@
-# strutil
+# msmecodex/lib
 
 msmecodex library to build plugins.
 
 ## Installation
-go get github.com/youruser/strutil@v1.0.0
+go get github.com/msmecodex/lib@v1.0.0
 
 ## Example
 ```go
