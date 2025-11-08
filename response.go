@@ -17,6 +17,13 @@ func BadRequest(c *fiber.Ctx, message string) error {
 	})
 }
 
+func NotFound(c *fiber.Ctx, message string) error {
+	return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+		"status":  false,
+		"message": message,
+	})
+}
+
 func InternalServerError(c *fiber.Ctx, message string) error {
 	return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 		"status":  false,
